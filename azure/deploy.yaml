@@ -1,0 +1,28 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-auth-api-deployment
+  labels:
+    app: user-auth-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-auth-api
+  template:
+    metadata:
+      labels:
+        app: user-auth-api
+    spec:
+      containers:
+      - image: hirush99/user-auth-api:{{tag}}
+        name: user-auth-api
+        ports:
+          - containerPort: 8080
+        resources:
+          requests:
+            cpu: 0.3
+            memory: 400Mi
+          limits:
+            cpu: 0.5
+            memory: 500Mi
