@@ -19,7 +19,7 @@ public class User {
 	@Id
 	private String id;
 	private String username;
-	private int contactNo;
+	private String contactNo;
 	private String email;
 	private String password;
 	private String userType;
@@ -33,7 +33,7 @@ public class User {
 	}
 
 	//Overloaded constructor
-	public User(String username,int contactNo,String password,String email,String userType) {
+	public User(String username,String contactNo,String password,String email,String userType) {
 		this.username = username;
 		this.contactNo = contactNo;
 		this.email = email;
@@ -59,11 +59,11 @@ public class User {
 	}
 
 
-	public int getContactNo() {
+	public String getContactNo() {
 		return contactNo;
 	}
 
-	public void setContactNo(int contactNo) {
+	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
 	

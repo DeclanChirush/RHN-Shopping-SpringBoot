@@ -10,7 +10,7 @@ import java.util.Set;
 public class UserRegisterDto {
  
     private String username;
-    private int contactNo;
+    private String contactNo;
     private String email;
     private Set<String> role;
     private String password;
@@ -25,11 +25,11 @@ public class UserRegisterDto {
     }
  
 
-	public int getContactNo() {
+	public String getContactNo() {
 		return contactNo;
 	}
 
-	public void setContactNo(int contactNo) {
+	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
 

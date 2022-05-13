@@ -38,6 +38,7 @@ import com.shopping.dto.UserLoginDto;
 import com.shopping.dto.UserRegisterDto;
 import com.shopping.security.jwt.JwtUtils;
 
+
 @Service
 public class UserApi {
 
@@ -63,15 +64,19 @@ public class UserApi {
 	UserDetailsServiceImpl userDetailsServiceImpl;
 
 	// User registration method
-	public MessageResponseDto registerUser(@Valid @RequestBody UserRegisterDto userRegister)
+	public ResponseEntity<?> registerUser(@Valid @RequestBody UserRegisterDto userRegister)
 			throws UnsupportedEncodingException, MessagingException {
 
 		if (userRepository.existsByUsername(userRegister.getUsername())) {
-			return new MessageResponseDto("Username is already taken!");
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponseDto("Error: Username is already taken!"));
 		}
 
 		if (userRepository.existsByEmail(userRegister.getEmail())) {
-			return new MessageResponseDto("Email is already taken!");
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponseDto("Email is already taken!"));
 		}
 
 		// This is for check the program display correct values or not
@@ -82,7 +87,7 @@ public class UserApi {
 		System.out.println(userRegister.getUserType());
 
 		// Create new user's account
-		User user = new User(userRegister.getUsername(), userRegister.getContactNo(),
+		User user = new User(userRegister.getUsername(),userRegister.getContactNo(),
 				passwordEncoder.encode(userRegister.getPassword()), userRegister.getEmail(),
 				userRegister.getUserType());
 
@@ -105,7 +110,9 @@ public class UserApi {
 
 		} else {
 
-			return new MessageResponseDto("Please select valid role!");
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponseDto("Please select valid role!"));
 
 		}
 
@@ -121,11 +128,11 @@ public class UserApi {
 		userRepository.save(user);
 
 		// return success MSG to frontEnd user is registered successfully
-		return new MessageResponseDto("User registered successfully!");
+		return ResponseEntity.ok( new MessageResponseDto("User registered successfully!"));
 	}
 
 	// User authenticate and Login method
-	public JwtResponseDto authUserLogin(@Valid @RequestBody UserLoginDto userLoginDto) {
+	public ResponseEntity<?> authUserLogin(@Valid @RequestBody UserLoginDto userLoginDto) {
 
 		// Get user name and password and create new AuthenticationToken
 		Authentication authentication = authenticationManager.authenticate(
@@ -151,11 +158,11 @@ public class UserApi {
 		System.out.println(roles.toString());
 
 		// Return JWT response to FrontEnd
-		return new JwtResponseDto(  jwt,
+		return ResponseEntity.ok(new JwtResponseDto(  jwt,
 									userDetails.getId(), 
 									userDetails.getUsername(), 
 									userDetails.getEmail(), 
-									roles);
+									roles));
 	}
 
 	public List<User> getAllUserDetails() {

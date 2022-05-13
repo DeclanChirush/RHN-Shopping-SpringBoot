@@ -23,7 +23,7 @@ public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String username;
-	private int contactNo;
+	private String contactNo;
 	private String email;
 
 	@JsonIgnore
@@ -33,7 +33,7 @@ public class UserDetailsImpl implements UserDetails {
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	//Overloaded constructor
-	public UserDetailsImpl(String id, String username, int contactNo, String email, String password,
+	public UserDetailsImpl(String id, String username, String contactNo, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
@@ -89,7 +89,7 @@ public class UserDetailsImpl implements UserDetails {
 		return email;
 	}
 	
-	public int getContactNo() {
+	public String getContactNo() {
 		return contactNo;
 	}
 

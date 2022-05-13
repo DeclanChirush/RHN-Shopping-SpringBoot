@@ -28,20 +28,20 @@ import com.shopping.dto.UserRegisterDto;
 
 @CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = "*",exposedHeaders = "*")
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/auth")
 public class UserEndpoint {
 	
 	@Autowired
 	UserApi userApi;
 	
-	@PostMapping("/signup")
-	public MessageResponseDto userRegister(@Valid @RequestBody UserRegisterDto userRegister) throws UnsupportedEncodingException, MessagingException {
+	@PostMapping("/sign-up")
+	public ResponseEntity<?> userRegister(@Valid @RequestBody UserRegisterDto userRegister) throws UnsupportedEncodingException, MessagingException {
 		return userApi.registerUser(userRegister);	
 	}
 	
 	
-	@PostMapping("/signin")
-	public JwtResponseDto userLogin(@Valid @RequestBody UserLoginDto userLogin){
+	@PostMapping("/sign-in")
+	public ResponseEntity<?> userLogin(@Valid @RequestBody UserLoginDto userLogin){
 		return userApi.authUserLogin(userLogin);
 		
 	}

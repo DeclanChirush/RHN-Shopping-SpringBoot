@@ -69,11 +69,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 
 			//All Permit Access Control
-			.antMatchers("/api/signup").permitAll()
-			.antMatchers("/api/signin").permitAll()
+			.antMatchers("/api/auth/sign-up").permitAll()
+			.antMatchers("/api/auth/sign-in").permitAll()
 
 			//View All User Details Access Control
 			.antMatchers("/api/get-all-users").hasRole("ADMIN")
+			
+			.antMatchers("/api/product/seller/**").permitAll()
+			.antMatchers("/api/product/buyer/**").permitAll()
 
 			.anyRequest().authenticated();
 
