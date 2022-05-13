@@ -10,6 +10,6 @@
 
 |       |       |
 | :---: | :-- |
-| /api/signin | { "username":"Anne", "contactNo": 788888888, "email":"example@gmail.com", "password":"123456", "userType":"buyer"} |
+| /api/signin | { "username":"Anne", "contactNo": "0788888888", "email":"example@gmail.com", "password":"123456", "userType":"buyer"} |
 | /api/signup | { "username":"hirush", "password":"123456"} | 
 
