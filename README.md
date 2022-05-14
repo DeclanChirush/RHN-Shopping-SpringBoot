@@ -6,10 +6,12 @@
 - If you assign new role name, you need to add that role to "Role.java" as well.
 - And also set that role into the registration method(In my case).
 
-### EndPoints -  http://localhost:8080
+### EndPoints :-  
+- Localhost : http://localhost:8080
+- RemoteHost : http://52.255.56.85:8080
 
 |       |       |
 | :---: | :-- |
-| /api/signin | { "username":"Anne", "contactNo": "0788888888", "email":"example@gmail.com", "password":"123456", "userType":"buyer"} |
-| /api/signup | { "username":"hirush", "password":"123456"} | 
+| /api/auth/sign-in | { "username":"Anne", "contactNo": "0788888888", "email":"example@gmail.com", "password":"123456", "userType":"buyer"} |
+| /api/auth/sign-up | { "username":"Anne", "password":"123456"} | 
 
