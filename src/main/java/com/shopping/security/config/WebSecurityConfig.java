@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/auth/sign-in").permitAll()
 
 			//View All User Details Access Control
-			.antMatchers("/api/get-all-users").hasRole("ADMIN")
+			.antMatchers("/api/auth/get-all-users").hasRole("ADMIN")
 			
 			.antMatchers("/api/product/seller/**").permitAll()
 			.antMatchers("/api/product/buyer/**").permitAll()
