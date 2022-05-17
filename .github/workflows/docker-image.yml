@@ -1,11 +1,9 @@
-name: Docker Image CI
+name: Docker image for user authenctiation 
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+ 
 jobs:
 
   build:
